@@ -1,0 +1,18 @@
+{
+  "locations": [
+    {
+      "id": "emu",
+      "name": "Erb Memorial Union",
+      "lat": 44.0445,
+      "lng": -123.0759,
+      "category": "meeting-space",
+      "description": "Main student union building",
+      "historical": "Site of major student protests in the 1970s"
+    }
+  ],
+  "categories": {
+    "meeting-space": { "color": "#2563eb", "icon": "📍" },
+    "historical": { "color": "#dc2626", "icon": "🏛️" },
+    "resource": { "color": "#16a34a", "icon": "📚" }
+  }
+}
