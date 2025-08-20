@@ -9,6 +9,7 @@ function Header() {
         <Link to="/history" style={{ textDecoration: 'none', color: '#333' }}>History</Link>
         <Link to="/organizations" style={{ textDecoration: 'none', color: '#333' }}>Organizations</Link>
         <Link to="/resources" style={{ textDecoration: 'none', color: '#333' }}>Resources</Link>
+        <Link to="/map" style={{ textDecoration: 'none', color: '#333' }}>Map</Link>
       </nav>
     </header>
   )

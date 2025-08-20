@@ -1,4 +1,41 @@
 {
+  "mapCenter": {
+    "lat": 44.0445,
+    "lng": -123.0759,
+    "zoom": 16
+  },
+  "categories": {
+    "historical": {
+      "name": "Historical Sites",
+      "color": "#dc2626",
+      "icon": "🏛️",
+      "description": "Sites of past organizing and protests"
+    },
+    "meeting-space": {
+      "name": "Meeting Spaces",
+      "color": "#2563eb", 
+      "icon": "📍",
+      "description": "Places where organizers meet"
+    },
+    "resource": {
+      "name": "Resources",
+      "color": "#16a34a",
+      "icon": "📚",
+      "description": "Helpful campus resources"
+    },
+    "admin": {
+      "name": "Administration",
+      "color": "#9333ea",
+      "icon": "🏢",
+      "description": "Key administrative buildings"
+    },
+    "activist": {
+      "name": "Current Organizing",
+      "color": "#ea580c",
+      "icon": "✊",
+      "description": "Active organizing locations"
+    }
+  },
   "locations": [
     {
       "id": "emu",
@@ -6,13 +43,101 @@
       "lat": 44.0445,
       "lng": -123.0759,
       "category": "meeting-space",
-      "description": "Main student union building",
-      "historical": "Site of major student protests in the 1970s"
+      "description": "Main student union building where many organizations meet",
+      "history": "Center of student life since 1950. Site of numerous student organizing meetings and events.",
+      "currentUse": "ROAR coalition meetings every Friday at 4pm in Room 320",
+      "image": "/images/campus/emu.jpg",
+      "organizeHere": true
+    },
+    {
+      "id": "johnson-hall",
+      "name": "Johnson Hall",
+      "lat": 44.0425,
+      "lng": -123.0738,
+      "category": "admin",
+      "description": "Main administration building - President's office",
+      "history": "Site of numerous student protests and occupations, including anti-war demonstrations in the 1970s and climate activism in recent years.",
+      "currentUse": "Target for petitions and demonstrations",
+      "tips": "Security is tight. Best approach is through scheduled meetings or organized demonstrations.",
+      "organizeHere": false
+    },
+    {
+      "id": "library",
+      "name": "Knight Library",
+      "lat": 44.0402,
+      "lng": -123.0729,
+      "category": "resource", 
+      "description": "Main university library",
+      "history": "Study space that has hosted teach-ins and study groups",
+      "currentUse": "Quiet organizing meetings, research for campaigns",
+      "tips": "Reserve group study rooms for planning meetings",
+      "organizeHere": true
+    },
+    {
+      "id": "quad",
+      "name": "Memorial Quad",
+      "lat": 44.0435,
+      "lng": -123.0745,
+      "category": "historical",
+      "description": "Central campus quad",
+      "history": "Historic site of major protests: Anti-Vietnam War rallies (1970s), Apartheid divestment shantytown (1985), climate strikes (2019-present)",
+      "currentUse": "Rallies, demonstrations, tabling",
+      "tips": "Need permits for amplified sound. Great visibility for actions.",
+      "permits": "Contact EMU Event Services 2+ weeks in advance",
+      "organizeHere": true
+    },
+    {
+      "id": "bean-complex",
+      "name": "Bean Complex",
+      "lat": 44.0412,
+      "lng": -123.0751,
+      "category": "resource",
+      "description": "Campus recreation center",
+      "currentUse": "Some student org meetings, wellness workshops",
+      "organizeHere": true
+    },
+    {
+      "id": "student-rec",
+      "name": "Student Recreation Center",
+      "lat": 44.0458,
+      "lng": -123.0782,
+      "category": "meeting-space",
+      "description": "Large meeting spaces available for student organizations",
+      "currentUse": "Town halls, large coalition meetings",
+      "tips": "Can accommodate 100+ people. Book early.",
+      "organizeHere": true
+    },
+    {
+      "id": "millrace",
+      "name": "Millrace Studios",
+      "lat": 44.0389,
+      "lng": -123.0691,
+      "category": "activist",
+      "description": "Alternative arts space",
+      "history": "Historically progressive space supporting activist art and events",
+      "currentUse": "Benefit concerts, activist art shows, radical speakers",
+      "organizeHere": true
+    },
+    {
+      "id": "lawrence-hall",
+      "name": "Lawrence Hall",
+      "lat": 44.0422,
+      "lng": -123.0719,
+      "category": "historical",
+      "description": "Psychology building",
+      "history": "Site of 1970 student occupation during anti-war protests",
+      "organizeHere": false
+    },
+    {
+      "id": "13th-olive", 
+      "name": "13th & Olive Intersection",
+      "lat": 44.0461,
+      "lng": -123.0858,
+      "category": "activist",
+      "description": "Major campus entrance",
+      "currentUse": "Banner drops, visibility actions, student intersection",
+      "tips": "High foot traffic during class changes. Be mindful of pedestrian safety.",
+      "organizeHere": true
     }
-  ],
-  "categories": {
-    "meeting-space": { "color": "#2563eb", "icon": "📍" },
-    "historical": { "color": "#dc2626", "icon": "🏛️" },
-    "resource": { "color": "#16a34a", "icon": "📚" }
-  }
+  ]
 }
