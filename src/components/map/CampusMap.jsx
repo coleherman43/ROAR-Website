@@ -104,6 +104,12 @@ function CampusMap({ selectedCategories = [], searchTerm = '', onLocationSelect 
 
   const { mapCenter, categories } = mapData;
 
+  // Define campus bounds (adjust these coordinates for UO campus)
+  const campusBounds = [
+    [44.0390, -123.0850], // Southwest corner
+    [44.0520, -123.0650]  // Northeast corner
+  ];
+
   return (
     <div className="campus-map-container">
       <MapContainer
@@ -111,6 +117,10 @@ function CampusMap({ selectedCategories = [], searchTerm = '', onLocationSelect 
         zoom={mapCenter.zoom}
         style={{ height: '600px', width: '100%' }}
         className="campus-map"
+        maxBounds={campusBounds}
+        maxBoundsViscosity={1.0} // How strongly to enforce bounds (0.0 to 1.0)
+        minZoom={14} // Prevent zooming out too far
+        maxZoom={18} // Prevent zooming in too far
       >
         <MapUpdater center={mapCenter} zoom={mapCenter.zoom} />
         
