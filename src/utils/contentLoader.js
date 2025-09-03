@@ -1,4 +1,3 @@
-// src/utils/contentLoader.js
 import { marked } from 'marked';
 
 // Configure marked for better HTML output
