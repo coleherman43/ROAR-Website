@@ -95,25 +95,53 @@ export async function loadContentDirectory(directory, filenames) {
 }
 
 /**
- * Load organizing guides with category filtering and search
+ * Load organizing guides dynamically using Vite's glob import
+ * This automatically discovers all .md files in the guides directory at build time
  * @returns {Array} - Array of guide objects
  */
 export async function loadGuides() {
-  const guideFilenames = [
-    'getting-started',
-    'event-planning', 
-    'coalition-building',
-    'direct-action'
-  ];
-  
-  const guides = await loadContentDirectory('guides', guideFilenames);
-  
-  // Sort by featured first, then by date
-  return guides.sort((a, b) => {
-    if (a.featured && !b.featured) return -1;
-    if (!a.featured && b.featured) return 1;
-    return new Date(b.date || 0) - new Date(a.date || 0);
-  });
+  try {
+    // Vite automatically discovers all .md files in the guides directory
+    const guideModules = import.meta.glob('/public/content/guides/*.md', { 
+      as: 'raw'
+    });
+    
+    const guides = [];
+    
+    // Load each discovered guide file
+    for (const [path, moduleLoader] of Object.entries(guideModules)) {
+      try {
+        const rawContent = await moduleLoader();
+        const { data, content } = parseFrontmatter(rawContent);
+        
+        // Extract filename for slug
+        const filename = path.split('/').pop().replace('.md', '');
+        
+        guides.push({
+          ...data,
+          content: marked(content),
+          slug: filename,
+          rawContent: content
+        });
+      } catch (error) {
+        console.error(`Error loading guide: ${path}`, error);
+        // Skip this file and continue with others
+      }
+    }
+    
+    console.log(`Dynamically loaded ${guides.length} guides`);
+    
+    // Sort by featured first, then by date
+    return guides.sort((a, b) => {
+      if (a.featured && !b.featured) return -1;
+      if (!a.featured && b.featured) return 1;
+      return new Date(b.date || 0) - new Date(a.date || 0);
+    });
+    
+  } catch (error) {
+    console.error('Error loading guides dynamically:', error);
+    return [];
+  }
 }
 
 /**
