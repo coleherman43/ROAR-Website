@@ -317,3 +317,23 @@
     font-size: 1.75rem;
   }
 }
+
+.home-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  line-height: 1.6;
+}
+
+.home-content h1 {
+  color: #2c5530;
+  border-bottom: 2px solid #ffc72c;
+  padding-bottom: 0.5rem;
+}
+
+.home-content blockquote {
+  border-left: 4px solid #ffc72c;
+  padding-left: 1rem;
+  font-style: italic;
+  margin: 1.5rem 0;
+}
