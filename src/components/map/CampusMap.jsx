@@ -52,8 +52,19 @@ function CampusMap({ selectedCategories = [], searchTerm = '', onLocationSelect 
   useEffect(() => {
     async function loadMapData() {
       try {
-        const response = await fetch('/data/campus-locations.json');
-        if (!response.ok) throw new Error('Failed to load map data');
+        const url = '/data/campus-locations.json';
+        console.log('Attempting to fetch from:', url);
+        console.log('Full URL will be:', window.location.origin + url);
+        
+        const response = await fetch(url);
+        console.log('Response status:', response.status);
+        
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.log('Error response:', errorText);
+          throw new Error(`Failed to load map data: ${response.status}`);
+        }
+        
         const data = await response.json();
         setMapData(data);
         setFilteredLocations(data.locations);
