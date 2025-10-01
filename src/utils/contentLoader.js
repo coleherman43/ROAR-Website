@@ -57,7 +57,9 @@ function parseFrontmatter(content) {
  */
 export async function loadMarkdownFile(filepath) {
   try {
-    const response = await fetch(filepath);
+    // Add base URL to the filepath
+    const url = `${import.meta.env.BASE_URL}${filepath.startsWith('/') ? filepath.slice(1) : filepath}`;
+    const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`Failed to load ${filepath}: ${response.status}`);
     }
@@ -66,10 +68,10 @@ export async function loadMarkdownFile(filepath) {
     const { data, content } = parseFrontmatter(rawContent);
     
     return {
-      ...data, // frontmatter (title, category, tags, etc.)
-      content: marked(content), // converted HTML
+      ...data,
+      content: marked(content),
       slug: filepath.split('/').pop().replace('.md', ''),
-      rawContent: content // original markdown
+      rawContent: content
     };
   } catch (error) {
     console.error('Error loading markdown file:', error);
@@ -85,7 +87,7 @@ export async function loadMarkdownFile(filepath) {
  */
 export async function loadContentDirectory(directory, filenames) {
   const promises = filenames.map(filename => 
-    loadMarkdownFile(`/content/${directory}/${filename}.md`)
+    loadMarkdownFile(`content/${directory}/${filename}.md`) // Remove leading slash since loadMarkdownFile handles it
   );
   
   const results = await Promise.all(promises);
@@ -163,7 +165,7 @@ export function getGuideCategories(guides) {
  * @returns {Object} - History content object
  */
 export async function loadHistory() {
-  const timeline = await loadMarkdownFile('/content/history/timeline.md');
+  const timeline = await loadMarkdownFile('content/history/timeline.md'); // Remove leading slash
   return { timeline };
 }
 
@@ -172,6 +174,6 @@ export async function loadHistory() {
  * @returns {Object} - Organizations content object
  */
 export async function loadOrganizations() {
-  const currentOrgs = await loadMarkdownFile('/content/organizations/current-orgs.md');
+  const currentOrgs = await loadMarkdownFile('content/organizations/current-orgs.md'); // Remove leading slash
   return { currentOrgs };
 }
