@@ -13,7 +13,7 @@ function CampusMapPage() {
   useEffect(() => {
     async function loadCategories() {
       try {
-        const response = await fetch('/data/campus-locations.json');
+        const response = await fetch(`${import.meta.env.BASE_URL}data/campus-locations.json`);
         const data = await response.json();
         setCategories(data.categories);
       } catch (error) {

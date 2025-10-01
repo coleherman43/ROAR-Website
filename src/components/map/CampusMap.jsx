@@ -52,9 +52,10 @@ function CampusMap({ selectedCategories = [], searchTerm = '', onLocationSelect 
   useEffect(() => {
     async function loadMapData() {
       try {
-        const url = '/data/campus-locations.json';
+        // Use import.meta.env.BASE_URL to get the correct base path
+        const url = `${import.meta.env.BASE_URL}data/campus-locations.json`;
         console.log('Attempting to fetch from:', url);
-        console.log('Full URL will be:', window.location.origin + url);
+        console.log('Base URL:', import.meta.env.BASE_URL);
         
         const response = await fetch(url);
         console.log('Response status:', response.status);
