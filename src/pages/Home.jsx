@@ -8,7 +8,7 @@ function Home() {
   useEffect(() => {
     async function loadContent() {
       try {
-        const response = await fetch(`${import.meta.evn.BASE_URL}data/home-content.md`);
+        const response = await fetch(`${import.meta.env.BASE_URL}data/home-content.md`);
         const text = await response.text();
         setContent(marked(text));
         setLoading(false);
