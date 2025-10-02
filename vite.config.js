@@ -1,14 +1,13 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig(({ command, mode }) => {
-  const base = mode === 'production' ? '/ROAR-Website/' : '/'
-  
-  return {
-    plugins: [react()],
-    base: base,
-    build: {
-      outDir: 'dist'
-    }
+export default defineConfig({
+  plugins: [react()],
+  base: '/',
+  build: {
+    outDir: 'dist'
+  },
+  define: {
+    'import.meta.env.BASE_URL': JSON.stringify('/')
   }
 })
